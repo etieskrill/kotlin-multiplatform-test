@@ -1,0 +1,9 @@
+package = gl
+
+headers = glad.h
+#headerFilter = gl.h glad.h
+
+#linkerOpts.mingw = -lgdi32
+
+#libraryPaths = C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\gl
+libraryPaths = C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64
