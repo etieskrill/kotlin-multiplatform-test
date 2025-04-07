@@ -1,6 +1,8 @@
 package io.github.etieskrill.test.kmp
 
-expect fun glInit()
+expect fun init()
+expect fun running(): Boolean
+expect fun update(delta: Float)
 
 enum class GLErrorType { NO_ERROR }
 expect fun glGetError(): GLErrorType
@@ -12,7 +14,8 @@ expect fun glValidateProgram(program: GLProgram)
 expect fun glUseProgram(program: GLProgram)
 
 enum class GLProgramParameterType { LINK_STATUS, VALIDATE_STATUS }
-expect fun glGetProgramParameter(program: GLProgram, type: GLProgramParameterType): Any?
+
+expect fun glGetProgramParameter(program: GLProgram, type: GLProgramParameterType): Int?
 expect fun glGetProgramInfoLog(program: GLProgram): String?
 
 typealias GLShader = Int
@@ -23,7 +26,8 @@ expect fun glCompileShader(shader: GLShader)
 expect fun glAttachShader(program: GLProgram, shader: GLShader)
 
 enum class GLShaderParameterType { COMPILE_STATUS }
-expect fun glGetShaderParameter(shader: GLShader, type: GLShaderParameterType): Any?
+
+expect fun glGetShaderParameter(shader: GLShader, type: GLShaderParameterType): Int?
 expect fun glGetShaderInfoLog(shader: GLShader): String?
 
 enum class GLDrawMode { TRIANGLES, TRIANGLE_STRIP }

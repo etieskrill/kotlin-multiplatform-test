@@ -1,0 +1,6 @@
+package = gl
+
+headers = glad/glad.h
+
+libraryPaths = src/nativeInterop/cinterop/gl/lib
+staticLibraries = libgladwin.a

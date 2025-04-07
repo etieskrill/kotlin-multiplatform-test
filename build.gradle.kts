@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -42,14 +42,17 @@ kotlin {
     nativeTarget.apply {
         val main by compilations.getting
         val glfw by main.cinterops.creating {
-            includeDirs("src/nativeInterop/cinterop")
+            definitionFile.set(project.file("src/nativeInterop/cinterop/glfw/glfw.def"))
+            includeDirs(
+                "src/nativeInterop/cinterop/glfw/include",
+//                "/usr/include"
+            )
         }
         val gl by main.cinterops.creating {
-            definitionFile.set { project.file("src/nativeInterop/cinterop/opengl/gl.def") }
+            definitionFile.set(project.file("src/nativeInterop/cinterop/gl/gl.def"))
             includeDirs(
-                "src/nativeInterop/cinterop/opengl",
-                "src/nativeInterop/cinterop/opengl/include/glad",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um\\gl",
+                "src/nativeInterop/cinterop/gl/include",
+//                "/usr/include"
             )
             //TODO link lib C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\um\x64
         }
