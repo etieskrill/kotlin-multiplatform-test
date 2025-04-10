@@ -2,6 +2,7 @@ package io.github.etieskrill.test.kmp
 
 import WebGL2RenderingContext
 import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.dom.appendElement
 import org.khronos.webgl.WebGLProgram
 import org.khronos.webgl.WebGLShader
@@ -70,6 +71,14 @@ actual fun running(): Boolean {
 }
 
 actual fun update(delta: Float) {} //TODO ... or perhaps actually nothing to do
+
+actual fun whileRunning(run: (delta: Float) -> Unit) {
+    fun loop() {
+        run(0f)
+        window.requestAnimationFrame { loop() } //not actually recursion, since callback frame is returned after call
+    }
+    window.requestAnimationFrame { loop() }
+}
 
 actual fun glGetError(): GLErrorType {
     val error = context.getError()

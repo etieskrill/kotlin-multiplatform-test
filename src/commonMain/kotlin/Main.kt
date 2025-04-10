@@ -68,9 +68,9 @@ fun helloTriangle() {
 
     glUseProgram(program)
 
-    while (running()) {
+    whileRunning { delta ->
+        update(delta)
         glDrawArrays(GLDrawMode.TRIANGLES, 0, 3)
-        update(0f)
     }
 }
 

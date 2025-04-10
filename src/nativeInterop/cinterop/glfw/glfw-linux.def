@@ -1,0 +1,10 @@
+package = glfw
+
+headers = glfw/glfw3.h
+
+compilerOpts = -DGLFW_INCLUDE_NONE
+
+linkerOpts.linux = -lc
+
+libraryPaths = src/nativeInterop/cinterop/glfw/lib/linux
+staticLibraries = libglfw3.a

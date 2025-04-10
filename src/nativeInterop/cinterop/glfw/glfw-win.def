@@ -2,7 +2,9 @@ package = glfw
 
 headers = glfw/glfw3.h
 
+compilerOpts = -DGLFW_INCLUDE_NONE
+
 linkerOpts.mingw = -lgdi32
 
-libraryPaths = src/nativeInterop/cinterop/glfw/lib
+libraryPaths = src/nativeInterop/cinterop/glfw/lib/win
 staticLibraries = libglfw3.a libglfw3dll.a

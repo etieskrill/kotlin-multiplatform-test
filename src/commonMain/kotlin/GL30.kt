@@ -3,6 +3,7 @@ package io.github.etieskrill.test.kmp
 expect fun init()
 expect fun running(): Boolean
 expect fun update(delta: Float)
+expect fun whileRunning(run: (delta: Float) -> Unit)
 
 enum class GLErrorType { NO_ERROR }
 expect fun glGetError(): GLErrorType

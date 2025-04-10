@@ -45,6 +45,10 @@ actual fun update(delta: Float) {
     glfwPollEvents()
 }
 
+actual fun whileRunning(run: (delta: Float) -> Unit) {
+    while (running()) run(0f)
+}
+
 actual fun glGetError(): GLErrorType {
     return when (val error = glGetError!!().toInt()) {
         GL_NO_ERROR -> GLErrorType.NO_ERROR
